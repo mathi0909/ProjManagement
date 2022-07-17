@@ -1,14 +1,15 @@
 package com.mathi.practice;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
-
- 
 
 // Project POJO
 class Project {
 	private Integer projectId;
 	private String projectName;
+	private LocalDateTime createdDate;
+	private LocalDateTime lastModifiedDate;
 }
 
 // Task level Model
@@ -20,6 +21,8 @@ class Task {
 	private TaskType taskType;
 	private Double hoursLeftForCompletion;
 	private List<Integer> dependentTasks;
+	private LocalDateTime createdDate;
+	private LocalDateTime lastModifiedDate;
 
 	// Getters & Setters
 }
@@ -129,6 +132,56 @@ class ProjectManagement {
 
 	}
 
+	/**
+	 * Add a new project in the application
+	 * 
+	 * @param project Input project object
+	 * @return Returns the project with its ID
+	 * 
+	 */
+	public Project addProject(Project project) {
+
+	}
+
+	/**
+	 * Fetch project by project Id
+	 * 
+	 * @param projectId
+	 * @return
+	 */
+	public Project getProjectById(Integer projectId) {
+
+	}
+
+	/**
+	 * Updates the project information
+	 * 
+	 * @param project
+	 */
+	public Project updateProject(Project project) {
+
+	}
+
+	/**
+	 * Deletes the project from the system
+	 * 
+	 * @param projectId
+	 */
+	public void deleteProject(Integer projectId) {
+
+	}
+
+	/**
+	 * 
+	 * @param project
+	 * 		Input Project 
+	 * @param estimatedCompletionDate
+	 * 
+	 * @return
+	 * 		Returns true if the estimatedCompletionDate is less than or equal to actual Completion Date
+	 * @throws Exception
+	 * 		
+	 */
 	public boolean validateProjectEstimation(Project project, LocalDate estimatedCompletionDate) throws Exception{
 		
 		// Step 1: Validate Project Id
@@ -155,7 +208,8 @@ class ProjectManagement {
 	}
 
 	/**
-	 * Returns the actual end date of the project by cumulating the tasks estimation.
+	 * Returns the actual end date of the project by cumulating the tasks
+	 * estimation.
 	 */
 	private LocalDateTime calculateCompletionDate(Project project) {
 
