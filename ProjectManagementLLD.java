@@ -1,10 +1,20 @@
+package com.mathi.practice;
+
+import java.time.LocalDate;
 import java.util.List;
 
-import com.mathi.practice.Task;
-import com.mathi.practice.TaskType;
+ 
 
+// Project POJO
+class Project {
+	private Integer projectId;
+	private String projectName;
+}
+
+// Task level Model
 class Task {
 
+	private Integer projectId;
 	private Integer taskId;
 	private String taskName;
 	private TaskType taskType;
@@ -23,7 +33,12 @@ enum TaskType {
 	// Other Task types
 }
 
-class ProjectManagement {
+/**
+ * 
+ * Manages all the Task related Opertations in the application
+ *
+ */
+class ManageTasks {
 
 	/**
 	 * Creates a new task for the project
@@ -47,9 +62,9 @@ class ProjectManagement {
 	 * @return List<Task> Returns the list of tasks that is present in the backend
 	 *         database.
 	 */
-	public List<Task> getAllTasks() {
+	public List<Task> getAllTasks(Integer projectId) {
 
-		// Using ORM Framework fetch the list of all tasks
+		// Using ORM Framework fetch the list of all tasks for the given project Id
 
 	}
 
@@ -63,7 +78,7 @@ class ProjectManagement {
 	public Task updateTask(Task task) {
 
 		// Validate the task Id
-		if (!validateTaskId()) {
+		if (!validateTaskAndProjectId()) {
 			// throws exception
 		}
 
@@ -79,20 +94,80 @@ class ProjectManagement {
 	 * @return
 	 * 
 	 */
-	private boolean validateTaskId(Integer taskId) {
+	private boolean validateTaskAndProjectId(Integer taskId) {
 		// check if the task id is present in the DB
 	}
 
 	/**
 	 * 
 	 * Delete Task from the DB
+	 * 
 	 * @param taskId Input task Id to delete it from the DB
 	 */
 	private void deleteTask(Integer taskId) {
 
 		// Validate the task Id
-		if (!validateTaskId()) {
+		if (!validateTaskAndProjectId()) {
 			// throws exception
 		}
 
 	}
+
+}
+
+class ProjectManagement {
+
+	ManageTasks manageTasks = new ManageTasks();
+
+	/**
+	 * Fetch all projects present in the appliaction
+	 * 
+	 * @return List<Project> Fetchs all the projects present in the appliaction
+	 * 
+	 */
+	public List<Project> getAllProjects() {
+
+	}
+
+	public boolean validateProjectEstimation(Project project, LocalDate estimatedCompletionDate) throws Exception{
+		
+		// Step 1: Validate Project Id
+		if(!validateProjectId())
+			// throws exception.
+		
+		// Step 2: Calculate the completion date from task level
+			LocalDateTime actualEndDate =	calculateCompletionDate(Project project)
+		
+		// Step 3: Compare if the task date is less than the estimatedCompletionDate
+			// Make the estimatedCompletionDate's time as 23:59:59 and compare the dateTime that we fetched from "calculateCompletionDate" method
+		
+	}
+
+	/**
+	 * 
+	 * @param project Input project object with its ID
+	 * @return Return boolean based on the project Id validation
+	 */
+	private boolean validateProjectId(Project project) {
+
+		// returns true if the project Id is present in the system
+
+	}
+
+	/**
+	 * Returns the actual end date of the project by cumulating the tasks estimation.
+	 */
+	private LocalDateTime calculateCompletionDate(Project project) {
+
+		// Step 1: using manageTasks get the list of tasks
+		List<Task> lstTask;
+
+		// Step 2: Loop through all the task and cumulate the hours for all the tasks
+
+		// Step 3: Add the total hours to the current DateTime
+
+		// Step 4: Return the calculated datetime
+
+	}
+
+}
